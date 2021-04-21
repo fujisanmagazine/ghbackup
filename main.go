@@ -10,7 +10,7 @@ import (
 	"os"
 	"runtime"
 
-	"qvl.io/ghbackup/ghbackup"
+	"github.com/fujisanmagazine/ghbackup/ghbackup"
 )
 
 // Can be set in build step using -ldflags

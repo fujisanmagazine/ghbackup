@@ -126,17 +126,17 @@ func getNextURL(header http.Header) string {
 	if len(parts) == 0 {
 		return ""
 	}
-	firstLink := parts[0]
-	if !strings.Contains(firstLink, "rel=\"next\"") {
-		return ""
+	for i := 0; i < len(parts); i++ {
+		part := parts[i]
+		if strings.Contains(part, "rel=\"next\"") {
+			linkParts := strings.Split(part, ";")
+			if len(linkParts) > 0 {
+				urlInBrackets := strings.TrimSpace(linkParts[0])
+				if len(urlInBrackets) >= 3 {
+					return urlInBrackets[1 : len(urlInBrackets)-1]
+				}
+			}
+		}
 	}
-	parts = strings.Split(firstLink, ";")
-	if len(parts) == 0 {
-		return ""
-	}
-	urlInBrackets := parts[0]
-	if len(urlInBrackets) < 3 {
-		return ""
-	}
-	return urlInBrackets[1 : len(urlInBrackets)-1]
+	return ""
 }

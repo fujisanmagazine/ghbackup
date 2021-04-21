@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"qvl.io/ghbackup/ghbackup"
+	"github.com/fujisanmagazine/ghbackup/ghbackup"
 )
 
 const (
